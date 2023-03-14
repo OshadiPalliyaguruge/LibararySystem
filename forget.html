@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.2/css/fontawesome.min.css" integrity="sha384-X8QTME3FCg1DLb58++lPvsjbQoCT9bp3MsUU3grbIny/3ZwUJkRNO8NPW6zqzuW9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <section class="h-100 bg-dark">
+        <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col">
+              <div class="card card-registration my-4">
+                <div class="row g-0">
+                  <div class="col-xl-6 d-none d-xl-block">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp"
+                      alt="Sample photo" class="img-fluid"
+                      style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+                  </div>
+                  <div class="col-xl-6"><br><br><br><br><br><br><br><br><br><br><br><br>
+                   <div class="card-body p-md-5 text-black">
+                  <h1 class="font-weight-bold py-2">Reset your password</h1>
+
+                  <div class="form-outline mb-4">
+                      <p>please enter your e-mail address. </p>
+                
+                  </div>
+      
+                  <div class="form-outline mb-3">
+                      <input type="text" id="email" name="email" placeholder="E-mail" class="form-control my-3 p-3">
+                    
+                  </div>
+      
+               
+                  <div class="form-check d-flex justify-content-start mb-3">
+                      <button class="btn1" type="button" id="resetPassword">Reset Password</button>
+                
+                  </div>
+                  </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+<!-------------------------------form----------------------------------------------->
+  
+
+<script type="module">
+  //------------------------------------getData-----------------------------------//
+  
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+  import {getDatabase} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
+  import { getAuth, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
+
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+    apiKey: "AIzaSyAN53D_5AfSgBclrHVJ804PcmxDHIRIab0",
+    authDomain: "prof-picture-ef187.firebaseapp.com",
+    projectId: "prof-picture-ef187",
+    storageBucket: "prof-picture-ef187.appspot.com",
+    messagingSenderId: "1050375371989",
+    appId: "1:1050375371989:web:9fc66667d28d56d3a4b65c"
+  };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db =getDatabase();
+    const auth = getAuth();
+    
+    //variables 
+    var resetbutton=document.getElementById("resetPassword");
+
+    //functions
+    function resetPW()
+    {
+        var email=document.getElementById('email').value;
+        sendPasswordResetEmail(auth, email)
+        .then(() => {
+            alert("Password reset mail send!!");
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            alert("Cann't reset mail");
+        });
+    }
+
+
+    resetbutton.addEventListener("click",resetPW);
+
+
+    
+</script>
+
+
+
+<!----------------------end of form------------------------------------------------->
+
+
+
+    
+      
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

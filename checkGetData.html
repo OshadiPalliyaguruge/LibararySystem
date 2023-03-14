@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retrieve Data</title>
+   
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="profile.css">
+ 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.2/css/fontawesome.min.css" integrity="sha384-X8QTME3FCg1DLb58++lPvsjbQoCT9bp3MsUU3grbIny/3ZwUJkRNO8NPW6zqzuW9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <center>
+
+<p>
+    <p>Name:<strong id="name"></strong></p>
+    <p>Address:<strong id="address"></strong></p>
+    <p>DOB:<strong id="bday"></strong></p>
+    <p>Gender:<strong id="gender"></strong></p>
+    <p>Education:<strong id="edu"></strong></p>
+    <p>LibararyId:<strong id="LibararyId"></strong></p>
+    <p>Email:<strong id="email"></strong></p>
+
+</p>
+</center>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+    import { getDatabase,set,ref,child,onValue,get} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword,onAuthStateChanged  } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
+    import { getStorage, ref as setRef, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-storage.js";
+  
+    
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyAN53D_5AfSgBclrHVJ804PcmxDHIRIab0",
+      authDomain: "prof-picture-ef187.firebaseapp.com",
+      projectId: "prof-picture-ef187",
+      storageBucket: "prof-picture-ef187.appspot.com",
+      messagingSenderId: "1050375371989",
+      appId: "1:1050375371989:web:9fc66667d28d56d3a4b65c"
+    };
+  
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db=getDatabase(app);
+    const auth = getAuth();
+   // const user = auth.currentUser;
+    //alert(userCredential.user.uid);
+
+
+/*
+    "rules": {
+    ".read": "now < 1681065000000",  // 2023-4-10
+    ".write": "now < 1681065000000",  // 2023-4-10
+  }
+}*/
+
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    const uid = user.uid;
+    alert(uid);
+    const userEmail = user.email;
+    alert(userEmail);
+    const photoURL = user.photoURL;
+    alert(photoURL);
+    getdata(uid);   
+    //login.addEventListener('click',getdata(uid));    // ...
+  } else {
+    // User is signed out
+    // ...
+  }
+});
+
+
+  function getdata(uid)
+  {
+    alert("hiiii");
+    //var user=document.getElementById('user').value;
+    //var user=uid;
+    alert("2");
+
+    get(ref(db,'Profile Details/'+uid))
+    .then((snapshot)=>{
+        alert("hiiii2");
+        var name=snapshot.val().Name[0];
+        var address=snapshot.val().Address;
+        var bday=snapshot.val().DOB;
+        var gender=snapshot.val().Gender;
+        var education=snapshot.val().Education;
+        var email=snapshot.val().Email;
+        var LibararyId=snapshot.val().LibararyId;
+
+
+alert("came here");
+        document.getElementById('name').innerHTML=name;
+        document.getElementById('address').innerHTML=address;
+        document.getElementById('bday').innerHTML=bday;
+        document.getElementById('gender').innerHTML=gender;
+        document.getElementById('edu').innerHTML=education;
+        document.getElementById('LibararyId').innerHTML=LibararyId;
+        document.getElementById('email').innerHTML=email;
+
+    })
+  }
+//alert("one");
+  //login.addEventListener('click',getdata);
+
+</script>
+</body>
+</html>
+

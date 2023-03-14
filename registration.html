@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+   
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="profile.css">
+ 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.2/css/fontawesome.min.css" integrity="sha384-X8QTME3FCg1DLb58++lPvsjbQoCT9bp3MsUU3grbIny/3ZwUJkRNO8NPW6zqzuW9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <section class="h-100 bg-dark">
+        <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col">
+              <div class="card card-registration my-4">
+                <div class="row g-0">
+                  <div class="col-xl-6 d-none d-xl-block">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp"
+                      alt="Sample photo" class="img-fluid"
+                      style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+                  </div>
+                  <div class="col-xl-6">
+                    <div class="card-body p-md-5 text-black">
+                                <!-- Column -->
+                                <h3 class="mb-5 text-uppercase">Library registration form</h3>
+                                    <div class="card-body little-profile text-center">
+                                        <br><br><div class="pro-img"><img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-default-avatar-profile-icon-vector-social-media-user-image-vector-illustration-227787227.jpg" class="proImage" alt="user"><input type="file" id="profile"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                          <div class="form-outline">
+                                            <label class="form-label" for="fName">First name</label>
+                                            <input type="text" id="fName" class="form-control form-control-lg" />
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                          <div class="form-outline">
+                                            <label class="form-label" for="lName">Last name</label>
+                                            <input type="text" id="lName" class="form-control form-control-lg" />
+                                          </div>
+                                        </div>
+                                      </div>
+                      
+                                      <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                          <div class="form-outline">
+                                            <label class="form-label" for="title">School/Univercity/Job</label>
+                                            <input type="text" id="title" class="form-control form-control-lg" />
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                          <div class="form-outline">
+                                            <label class="form-label" for="LibararyId">Library ID</label>
+                                            <input type="text" id="LibararyId" class="form-control form-control-lg" />
+                                          </div>
+                                        </div>
+                                      </div>
+                      
+                                      <div class="form-outline mb-4">
+                                        <label class="form-label" for="address">Address</label>
+                                        <input type="text" id="address" class="form-control form-control-lg" />
+                                      </div>
+                      
+                                      <div class="form-outline mb-4">
+                                        <label class="form-label" for="bday">DOB</label>
+                                        <input type="date" id="bday" class="form-control form-control-lg" />
+                                      </div>
+                
+                                      <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+                      
+                                        <h6 class="mb-0 me-4">Gender: </h6>
+                      
+                                        <div class="form-check form-check-inline mb-0 me-4">
+                                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="gender"
+                                            value="Female"/>
+                                          <label class="form-check-label" for="gender">Female</label>
+                                        </div>
+                      
+                                        <div class="form-check form-check-inline mb-0 me-4">
+                                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="gender"
+                                            value="Male"/>
+                                          <label class="form-check-label" for="gender">Male</label>
+                                        </div>
+                      
+                                        
+                                      </div>
+                      
+                                      <div class="row">
+                                        <div class="col-md-6 mb-4">
+                      
+                                          <select class="select" id="state">
+                                            <option value="1">State</option>
+                                            <option value="2">Single</option>
+                                            <option value="3">Married</option>
+                                          </select>
+                      
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                      
+                                          <select class="select" id="city">
+                                            <option value="1">City</option>
+                                            <option value="2">Gampaha</option>
+                                            <option value="3">Colombo</option>
+                                            <option value="4">Kaluthara</option>
+                                          </select>
+                      
+                                        </div>
+                                      </div>
+                      
+                                      <div class="form-outline mb-4">
+                                        <label class="form-label" for="email">Email ID</label>
+                                        <input type="email" id="email" class="form-control form-control-lg" />
+                                      </div>
+                      
+                                      <div class="form-outline mb-4">
+                                        <label class="form-label" for="password">Password</label>
+                                        <input type="password" id="password" class="form-control form-control-lg" />
+                                      </div>
+                      
+                                      <div class="form-outline mb-4">
+                                        <label class="form-label" for="confirmPW">Confirm Password</label>
+                                        <input type="password" id="confirmPW" class="form-control form-control-lg" />
+                                      </div>
+                      
+                      
+                                      <div class="d-flex justify-content-end pt-3">
+                                        <button type="reset" id="reset" class="btn btn-light btn-lg" >Reset All</button>
+                                        <button type="submit" id="signUp" class="btn btn-warning btn-lg ms-2">Sign Up</button>
+                                      </div>
+                          
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+             
+      </section>
+      <!-------------------------------------js part----------------------------------------------------------->
+      
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+  import { getDatabase,set,ref } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
+  import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
+  import { getStorage, ref as setRef, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-storage.js";
+
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAN53D_5AfSgBclrHVJ804PcmxDHIRIab0",
+    authDomain: "prof-picture-ef187.firebaseapp.com",
+    projectId: "prof-picture-ef187",
+    storageBucket: "prof-picture-ef187.appspot.com",
+    messagingSenderId: "1050375371989",
+    appId: "1:1050375371989:web:9fc66667d28d56d3a4b65c"
+  };
+
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db=getDatabase(app);
+  const auth = getAuth();
+
+  
+  function signing(){
+//alert("hii1");
+
+  var firstName=document.getElementById('fName').value;
+  var lastName=document.getElementById('lName').value;
+  var userName=firstName+" "+lastName;
+  var title=document.getElementById('title').value;
+  var LibararyId=document.getElementById('LibararyId').value;
+  var address=document.getElementById('address').value;
+  var birthday=document.getElementById('bday').value;
+  var gender=getGender();
+  var email=document.getElementById('email').value;
+  var password=document.getElementById('password').value;
+  var confirmPassword=document.getElementById('confirmPW').value;
+  
+  //alert(gender);
+//alert("hii2");
+  if((firstName=="")||(lastName=="")||(title=="")||(LibararyId=="")||(address=="")||(birthday=="")||(gender=="")||(email=="")||(password=="")||(confirmPassword==""))
+  {
+    alert("Please enter all the details !!");
+  }
+  else if(password!=confirmPassword)
+  {
+    alert("Passwords didn't match !!!" );
+  }
+  else
+  {
+    createUserWithEmailAndPassword(auth, email, password,confirmPassword)
+    .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        const userId=user.uid;
+        set(ref(db,'Login Details/'+ user.uid),{
+        userName:userName,
+        email:email,        //never save our password to the database
+        });
+        
+        // ...
+      //var photoLink=profilePic(userId);
+      alert("Account created...");
+      profilePic(userName,title,LibararyId,address,birthday,gender,email,userId);
+      //insertData(userName,title,LibararyId,address,birthday,gender,email,userId,photoLink);
+    })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage);
+        alert("Account cann't be created!!!");
+      });
+  }
+}
+
+
+function insertData(userName,title,LibararyId,address,birthday,gender,email,userId,photoLink){
+  set(ref(db, 'Profile Details/' + userId), {
+    Name: userName,
+    Education: title,
+    LibararyId : LibararyId,
+    Address:address,
+    DOB:birthday,
+    Gender:gender,
+    Email:email,
+    Photo:photoLink
+  })
+  .then(()=>{
+      alert("Data added Successfully!");
+      //profilePic(userId);
+  })
+  .catch((error)=>{
+    const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage);
+        alert("Please upload your image");
+  });
+}
+
+function profilePic(userName,title,LibararyId,address,birthday,gender,email,userId)
+{
+  //alert("hii");
+  const file=document.getElementById('profile').files[0];
+  const storage = getStorage();
+  const storageRef = setRef(storage, 'Profile Pictures/'+userId);
+  
+  const metadata = {
+  contentType: 'image/jpeg',};
+
+// Upload the file
+const uploadTask = uploadBytesResumable(storageRef, file);
+
+// Listen for state changes, errors, and completion of the upload.
+uploadTask.on('state_changed',
+  (snapshot) => {
+    // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    console.log('Upload is ' + progress + '% done');
+
+    switch (snapshot.state) {
+      case 'paused':
+        console.log('Upload is paused');
+        break;
+      case 'running':
+        console.log('Upload is running');
+        break;
+    }
+    alert("Image Uploaded");
+  }, 
+  (error) => {
+    // A full list of error codes is available at
+    // https://firebase.google.com/docs/storage/web/handle-errors
+    switch (error.code) {
+      case 'storage/unauthorized':
+        console.log('Unauthorized Storage !!');
+        break;
+      case 'storage/canceled':
+        console.log('Storage Canceled !!');
+        break;
+      case 'storage/unknown':
+        console.log('Unknown error occured !!');
+        break;
+    }
+  }, 
+  () => {
+    // Upload completed successfully, now we can get the download URL
+    getDownloadURL(uploadTask.snapshot.ref)
+    .then((downloadURL) => {
+      console.log('File available at', downloadURL);
+      //var downloadLink=downloadURL;
+      const img=document.querySelector(".proImage");
+      //alert(downloadLink);
+      if(downloadURL!="")
+      {
+        //alert("link");
+        img.setAttribute("src",downloadURL);
+        img.style.display="block";
+        alert('sent1');
+        insertData(userName,title,LibararyId,address,birthday,gender,email,userId,downloadURL);
+        alert('sent2');
+      }
+      //return downloadURL;
+      alert('sent');
+    });
+  }
+)
+
+}
+
+function getGender() {
+    var checkRadio = document.querySelector(
+      'input[name="inlineRadioOptions"]:checked');
+    if(checkRadio != null) {
+        var gender=checkRadio.value;
+      // alert(checkRadio.value);
+    }
+    else {
+      //alert("Please enter gender");
+      var gender=" ";
+    }
+    return gender;
+	}
+
+
+/*
+  if(password1 != password2)  
+  {   
+    alert("Passwords did not match");  
+  } 
+  else 
+  {  
+    createUserWithEmailAndPassword(auth, email, password1,password2)
+    .then((userCredential) => {
+  // Signed in 
+    const user = userCredential.user;
+
+    set(ref(database,'Student Account Details/'+ user.uid),{
+    userName:userName,
+    email:email,        //never save our password to the database
+    })
+    alert('Account created')
+    //window.location.replace("student.html")
+    location.href = "viewStudentProfile.html";
+  })
+    
+     
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+ 
+    alert(errorMessage);
+    });*/
+    
+  //}
+
+    
+
+signUp.addEventListener('click',signing);
+
+</script>
+</body>
+</html>

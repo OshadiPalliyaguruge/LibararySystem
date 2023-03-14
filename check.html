@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		How to check whether a radio button
+		is selected with JavaScript ?
+	</title>
+</head>
+
+<body>
+	
+	<h1 style="color:green;">
+		GeeksforGeeks
+	</h1>
+	
+	<h3>
+		Click on the button to check whether<br>
+		a radio button is selected or not
+	</h3>
+	
+	<form>
+		<input type="radio" name="GFG" id="GFG"
+			value="GeeksforGeeks">GeeksforGeeks<br>
+		
+		<input type="radio" name="GFG" id="HTML"
+			value="HTML">HTML<br>
+		
+		<input type="radio" name="GFG" id="JS"
+			value="JavaScript">JavaScript<br><br>
+	
+		<button type="button" onclick="display()">
+			Submit
+		</button>
+	</form>
+	<br>
+	<div id="disp" style=
+		"color:green; font-size:18px; font-weight:bold;">
+	</div>
+</body>
+	<script>
+		function display() {
+			var checkRadio = document.querySelector(
+				'input[name="GFG"]:checked');
+			
+			if(checkRadio != null) {
+				alert(checkRadio.value);
+			}
+			else {
+				document.getElementById("disp").innerHTML
+					= "No one selected";
+			}
+		}
+	</script>
+</html>

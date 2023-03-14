@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+   
+    <link rel="stylesheet" href="index.css">
+ 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.2/css/fontawesome.min.css" integrity="sha384-X8QTME3FCg1DLb58++lPvsjbQoCT9bp3MsUU3grbIny/3ZwUJkRNO8NPW6zqzuW9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <section class="h-100 bg-dark">
+        <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col">
+              <div class="card card-registration my-4">
+                <div class="row g-0">
+                  <div class="col-xl-6 d-none d-xl-block">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp"
+                      alt="Sample photo" class="img-fluid"
+                      style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+                  </div>
+                  <div class="col-xl-6"><br><br><br><br><br><br><br><br>
+                    <div class="card-body p-md-5 text-black">
+                      <h3 class="mb-5 text-uppercase">SIGN IN</h3>
+      
+                      <div class="row">
+                        <div class="col-md-6 mb-4">
+                          <div class="form-outline">
+                            <label class="form-label" for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control form-control-lg" />
+                          </div>
+                        </div>
+                      </div>
+      
+                      <div class="row">
+                        <div class="col-md-6 mb-4">
+                          <div class="form-outline">
+                            <label class="form-label" for="password">Password</label>
+                            <input type="password" id="password" class="form-control form-control-lg" />
+                          </div>
+                        </div>
+                      </div>
+      
+                      
+      
+                       <!-- 2 column grid layout for inline styling -->
+  <div class="row mb-4">
+    <div class="col d-flex justify-content-center">
+      <!-- Checkbox -->
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox"  id="rememberMe" checked />
+        <label class="form-check-label" for="rememberMe"> Remember me </label>
+      </div>
+    </div>
+
+    <div class="col">
+      <!-- Simple link -->
+      <a href="forget.html">Forgot password?</a>
+    </div>
+  </div>
+
+  <!-- Submit button -->
+ 
+  <div class="d-flex justify-content-end pt-3">
+    <div class="form-row">
+        <div class="col-lg-7">
+            <button type="reset" id="reset" class="btn btn-primary btn-lg btn-block" name="signup_reset">Reset</button>
+        </div>
+    </div>
+    <div class="form-row">
+       <div class="col-lg-7">
+            <button type="submit" id="login" class="btn btn-primary btn-lg btn-block" name="signup_submit">Login</button>
+        </div>
+    </div>
+    
+  </div>
+
+  <!-- Register buttons -->
+  <div class="text-center">
+    <p>Not a member? <a href="registration.html">Register</a></p>
+  </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+<!-------------------------------------------Js Part----------------------------------------------------->
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+    import { getDatabase,set,ref,update } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged ,signOut,inMemoryPersistence, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+    apiKey: "AIzaSyAN53D_5AfSgBclrHVJ804PcmxDHIRIab0",
+    authDomain: "prof-picture-ef187.firebaseapp.com",
+    projectId: "prof-picture-ef187",
+    storageBucket: "prof-picture-ef187.appspot.com",
+    messagingSenderId: "1050375371989",
+    appId: "1:1050375371989:web:9fc66667d28d56d3a4b65c"
+  };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db=getDatabase(app);
+    const auth = getAuth();
+    const dt=new Date();
+  
+  
+  function create(){
+  
+  var email=document.getElementById('email').value;
+  var password=document.getElementById('password').value;
+  
+  signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        //alert(userCredential.user.uid);
+        update(ref(db,'Login Details/'+ user.uid),{
+        last_login:dt,       
+        })
+        alert('User loged in ');
+       nextPage();
+    // window.onload=
+  //  window.location.replace("profile.html");
+       // window.location.replace("profile.html");
+        // ...
+        //window.location.replace("viewStudentProfile.html")
+         
+  })
+  .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage);
+        alert('You entered Email or Password is Incorrect');
+  });
+  
+  }
+  
+  login.addEventListener('click',create);
+  //var nextPg=document.getElementById('login');
+  //nextPg.addEventListener('click',nextPage);
+  var remeberBtn=document.querySelector("#rememberMe");
+  
+  function rememberMe()
+  {
+    setPersistence(auth, inMemoryPersistence)
+    .then(() => {
+            const provider = new GoogleAuthProvider();
+            // In memory persistence will be applied to the signed in Google user
+            // even though the persistence was set to 'none' and a page redirect
+            // occurred.
+            return signInWithRedirect(auth, provider);
+    })
+    .catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+    });
+  }
+  
+  remeberBtn.addEventListener('click',rememberMe);
+
+  function nextPage()
+  {
+    window.location.replace("profile.html");
+  }
+  </script>
+</body>
+</html>

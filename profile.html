@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+   
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="profile.css">
+ 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.2/css/fontawesome.min.css" integrity="sha384-X8QTME3FCg1DLb58++lPvsjbQoCT9bp3MsUU3grbIny/3ZwUJkRNO8NPW6zqzuW9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <section class="h-100 bg-dark">
+        <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col">
+              <div class="card card-registration my-4">
+                <div class="row g-0">
+                  <div class="col-xl-6 d-none d-xl-block">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp"
+                      alt="Sample photo" class="img-fluid"
+                      style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+                  </div>
+                  <div class="col-xl-6">
+                    <div class="card-body p-md-5 text-black">
+                                <!-- Column -->
+                                <h3 class="mb-5 text-uppercase"><center>Profile</center></h3>
+                                    <div class="card-body little-profile text-center">
+                                        <br><br><div class="pro-img"><img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-default-avatar-profile-icon-vector-social-media-user-image-vector-illustration-227787227.jpg" alt="user" class="proImage"></div>
+                                    </div>
+                                        <div class="row">
+                                            <div class="col-md-6 mb-4">
+                                              <div class="form-outline">
+                                                <label class="form-label" for="fName">First name</label>
+                                                <p id="fName" class="form-control form-control"></p>
+                                              </div>
+                                            </div>
+                                            <div class="col-md-6 mb-4">
+                                              <div class="form-outline">
+                                                <label class="form-label" for="lName">Last name</label>
+                                                <p id="lName" class="form-control form-control"></p>
+                                              </div>
+                                            </div>
+                                        </div>
+                          
+                                          <div class="row">
+                                            <div class="col-md-6 mb-4">
+                                              <div class="form-outline">
+                                                <label class="form-label" for="edu">School/Univercity/Job</label>
+                                                <p id="edu" class="form-control form-control"></p>
+                                              </div>
+                                            </div>
+                                            <div class="col-md-6 mb-4">
+                                              <div class="form-outline">
+                                                <label class="form-label" for="LibararyId">Libarary Id</label>
+                                                <p id="LibararyId" class="form-control form-control"></p>
+                                              </div>
+                                            </div>
+                                          </div>
+                          
+                                          <div class="form-outline mb-4">
+                                            <label class="form-label" for="address">Address</label>
+                                            <p id="address" class="form-control form-control"></p>
+                                          </div>
+                          
+                                          <div class="form-outline mb-4">
+                                            <label class="form-label" for="bday">DOB</label>
+                                            <p id="bday" class="form-control form-control"></p>
+                                          </div>
+                        
+                                          <div class="row">
+                                            <div class="col-md-4 mb-3">
+                                              <div class="form-outline">
+                                                <label class="form-label" for="gender">Gender</label>
+                                                <p id="gender" class="form-control form-control"></p>
+                                              </div>
+                                            </div>
+                                            
+                                          </div>
+                        
+                                          <div class="form-outline mb-4">
+                                            <label class="form-label" for="email">Email ID</label>
+                                            <p id="email" class="form-control form-control"></p>
+                                          </div>
+                          
+                                  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+             
+      </section>
+      <!-------------------------------------js part----------------------------------------------------------->
+      
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+  import { getDatabase,set,ref,child,onValue,get} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
+  import { getAuth, createUserWithEmailAndPassword,onAuthStateChanged  } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
+  import { getStorage, ref as setRef, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-storage.js";
+
+  
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAN53D_5AfSgBclrHVJ804PcmxDHIRIab0",
+    authDomain: "prof-picture-ef187.firebaseapp.com",
+    projectId: "prof-picture-ef187",
+    storageBucket: "prof-picture-ef187.appspot.com",
+    messagingSenderId: "1050375371989",
+    appId: "1:1050375371989:web:9fc66667d28d56d3a4b65c"
+  };
+
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db=getDatabase(app);
+  const auth = getAuth();
+
+  onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    const uid = user.uid;
+    //alert(uid);
+    getdata(uid);   
+    //login.addEventListener('click',getdata(uid));    // ...
+  } else {
+    // User is signed out
+    // ...
+  }
+});
+
+function getdata(uid)
+  {
+    //alert("hiiii");
+    get(ref(db,'Profile Details/'+uid))
+    .then((snapshot)=>{
+       // alert("hiiii2");
+        var firstName=snapshot.val().Name[0];
+        var lastName=snapshot.val().Name[2];
+        var education=snapshot.val().Education;
+        var LibararyId=snapshot.val().LibararyId;
+        var address=snapshot.val().Address;
+        var bday=snapshot.val().DOB;
+        var gender=snapshot.val().Gender;
+        var email=snapshot.val().Email;
+        var photoURL=snapshot.val().Photo;
+        const img=document.querySelector(".proImage");
+        img.setAttribute("src",photoURL);
+        //img.style.display="block";
+       // img.style.align="center";
+        
+//alert("came here");
+        document.getElementById('fName').innerHTML=firstName;
+        document.getElementById('lName').innerHTML=lastName;
+        document.getElementById('edu').innerHTML=education;
+        document.getElementById('LibararyId').innerHTML=LibararyId;
+        document.getElementById('address').innerHTML=address;
+        document.getElementById('bday').innerHTML=bday;
+        document.getElementById('gender').innerHTML=gender;
+        document.getElementById('email').innerHTML=email;
+        
+    })
+  }
+
+</script>
+</body>
+</html>
